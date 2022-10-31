@@ -1,32 +1,31 @@
-require 'pry'
+
 class Author
 
   #A name **cannot** be changed after it is initialized.
   attr_reader :name
-
+   @@all=[]
 
   def initialize(name)
     @name = name
-  
+    @@all << self
   end
 
-  #Returns the name of the author
-  def name
-    @author
+  def self.all
+    @@all
   end
 
 #Returns an array of Article instances the author has written
 def articles
-  Article.all.select do |article_author| 
-    article_author.author == self
+  Article.all.select do |article| 
+    article.author == name
   end
 end
 
 
   #Returns a **unique** array of Magazine instances for which the author has contributed to
   def magazines
-    magazines = articles_author.map do |article_author|
-      article_author.magazine
+    magazines = articles.map do |author|
+      author.magazine
     end
     magazines.uniq
   end
@@ -46,5 +45,5 @@ end
     topics.uniq
   end
 
-  binding.pry
+ 
 end

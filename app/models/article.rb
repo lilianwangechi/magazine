@@ -1,8 +1,8 @@
-require 'pry'
+
 class Article
 #An article **cannot** change its author, magazine, or title after it is has been initialized. 
  #Returns the author and magazine for that given article
-attr_reader:author,magazine
+attr_reader :title, :magazine
 
 @@all = []
 
@@ -11,19 +11,25 @@ def  initialize(author,magazine,title)
   @author = author
   @magazine = magazine
   @title = title 
-  @all << self
+  @@all << self
 end
 
    #Returns the title for that given article
-  def article_title
+  def title
     @title
   end
 
+     #Returns the author for that given article
+  def author
+   @author
+    end
+
+  #Returns the magazine for that given article
+       def magazine
+        @magazine
+      end
   # Returns an array of all Article instances
 def self.all
   @@all
 end
-
-
-binding.pry
 end

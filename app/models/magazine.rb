@@ -1,10 +1,10 @@
-require 'pry'
+
 class Magazine
 
   #The name and category of the magazine **can be** changed after being initialized.
   attr_accessor :name, :category
 
- @all = []
+ @@all = []
 
 
  #A magazine is initialized with a name as a string and a category as a string
@@ -13,15 +13,21 @@ class Magazine
     @name = name
     #Returns the category of this magazine
     @category = category
+    @@all << self
+
   end
+   def self.all
+    @@all
+   end
+
 
   #Returns the name of this magazine
-  def magazine_name
+  def name
     @name
   end
 
  #Returns the category of this magazine
-  def magazine_category
+  def category
     @category
   end
 
@@ -43,5 +49,5 @@ class Magazine
     end
     authors
   end
-  binding.pry
+
 end
